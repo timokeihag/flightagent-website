@@ -15,6 +15,13 @@ const IN_DEVELOPMENT = 'Flightagent är under utveckling. Alla funktioner som be
 const REQUIRED_PAGES = {
   'index.html': { mustContain: [IN_DEVELOPMENT], mustLinkTo: ['/privacy', '/terms'] },
   '404.html': { mustLinkTo: ['/'] },
+  'privacy/index.html': {
+    mustContain: [DRAFT, IN_DEVELOPMENT, 'Senast uppdaterad', 'imy.se', 'Profil'],
+    sections: [
+      'ansvarig', 'uppgifter', 'rattslig-grund', 'ai', 'partner', 'bitraden',
+      'overforing', 'lagring', 'rattigheter', 'alder', 'google', 'andringar',
+    ],
+  },
 };
 
 const errors = [];
