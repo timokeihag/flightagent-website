@@ -154,6 +154,15 @@ if (existsSync(cssFile)) {
   }
 }
 
+// Google's brand check opens /privacy and /terms without a slash and may not follow a redirect,
+// so statichost rewrites them to the page (status 200) instead of redirecting to /privacy/.
+const REWRITES = ['/privacy /privacy/index.html 200', '/terms /terms/index.html 200'];
+const redirectsFile = join(pub, '_redirects');
+const redirects = existsSync(redirectsFile)
+  ? readFileSync(redirectsFile, 'utf8').split('\n').map((l) => l.trim().split(/\s+/).join(' '))
+  : [];
+for (const rule of REWRITES) if (!redirects.includes(rule)) fail('_redirects', `saknar regeln "${rule}"`);
+
 if (errors.length) {
   for (const e of errors) console.log(e);
   console.log(`check failed (${errors.length} problem${errors.length === 1 ? '' : 's'})`);
