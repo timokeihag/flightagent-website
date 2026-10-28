@@ -22,6 +22,14 @@ const REQUIRED_PAGES = {
       'overforing', 'lagring', 'rattigheter', 'alder', 'google', 'andringar',
     ],
   },
+  'terms/index.html': {
+    mustContain: [DRAFT, IN_DEVELOPMENT, 'Senast uppdaterad', 'paketreselagen', 'Allmänna reklamationsnämnden'],
+    mustLinkTo: ['/privacy'],
+    sections: [
+      'leverantor', 'tjansten', 'bokning', 'provision', 'konto', 'anvandning',
+      'ansvar', 'immateriella', 'uppsagning', 'andringar', 'lag', 'kontakt',
+    ],
+  },
 };
 
 const errors = [];
