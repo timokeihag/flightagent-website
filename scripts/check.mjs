@@ -15,7 +15,8 @@ const IN_DEVELOPMENT = 'Flightagent är under utveckling. Alla funktioner som be
 const REQUIRED_PAGES = {
   'index.html': {
     mustContain: [IN_DEVELOPMENT, 'utkast som ska granskas av en jurist'],
-    mustLinkTo: ['/privacy', '/terms'],
+    // Google's brand check wants the home page to link to exactly the URLs in the consent screen.
+    mustLinkTo: ['https://www.flightagent.se/privacy', 'https://www.flightagent.se/terms'],
   },
   '404.html': { mustLinkTo: ['/'] },
   'privacy.html': {
