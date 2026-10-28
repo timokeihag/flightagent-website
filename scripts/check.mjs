@@ -24,8 +24,10 @@ const REQUIRED_PAGES = {
       // Final review: sessions keep IP and device type while signed in, and Art. 13 items.
       'typ av enhet och webbläsare', 'Inloggningen hos Supabase', 'kopia av skyddsåtgärderna',
       'Förnamnet är frivilligt', 'Appen använder inga kakor.',
+      // The Supabase project is on the free plan today (Timo 28 okt); "högst" holds on Free and Pro.
+      'Loggar hos Supabase: högst 7 dagar', 'sparas i högst 7 dagar',
     ],
-    mustNotContain: ['så att agenten vet vad du heter', 'inga kakor för reklam'],
+    mustNotContain: ['så att agenten vet vad du heter', 'inga kakor för reklam', 'Loggar hos Supabase: 7 dagar'],
     sections: [
       'ansvarig', 'uppgifter', 'rattslig-grund', 'ai', 'partner', 'bitraden',
       'overforing', 'lagring', 'rattigheter', 'alder', 'google', 'andringar',
@@ -121,6 +123,13 @@ for (const [page, rules] of Object.entries(REQUIRED_PAGES)) {
     if (href.startsWith('/') && !href.startsWith('//') && !internalTargetExists(href)) {
       fail(page, `intern länk pekar på sida som saknas: ${href}`);
     }
+  }
+
+  // statichost answers /privacy with a 308 to /privacy/, so canonical must be the address that answers 200.
+  const canonical = html.match(/<link\b[^>]*rel="canonical"[^>]*href="([^"]*)"/);
+  if (canonical) {
+    const expected = 'https://www.flightagent.se/' + page.replace(/index\.html$/, '');
+    if (canonical[1] !== expected) fail(page, `canonical är ${canonical[1]}, ska vara ${expected}`);
   }
 
   for (const s of rules.mustContain ?? []) if (!text.includes(s)) fail(page, `saknar texten "${s}"`);

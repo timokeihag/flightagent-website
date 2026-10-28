@@ -7,7 +7,8 @@ Avsnitten anges med id, till exempel `privacy#lagring` för avsnittet `id="lagri
 | När | Se över | Vad |
 |---|---|---|
 | **Före lansering** | allt | Juristgranskning. Ta bort utkastraden först efter den. |
-| **Före lansering** | `privacy#lagring`, `privacy#uppgifter` | Kontrollera att "Write audit logs to the database" är av i Supabase (annars sparas inloggningsloggar utan slutdatum), och att projektet har Pro-planens 7 dagar för loggar och säkerhetskopior. |
+| **Före lansering** | `privacy#lagring`, `privacy#uppgifter` | Kontrollera att "Write audit logs to the database" fortfarande är av i Supabase (Timo kontrollerade 28 okt). Policyn säger "högst 7 dagar" för loggar och säkerhetskopior, vilket stämmer på fri plan och Pro. |
+| Supabase byter plan | `privacy#lagring` | Team eller högre sparar säkerhetskopior längre än 7 dagar. |
 | **Före lansering** | `privacy#overforing` | Bekräfta överföringsskyddet för Microsoft 365 via GoDaddy (står som obekräftat i `docs/sources.md`). |
 | **Före lansering** | `privacy#alder`, `terms#konto` | Juristen bekräftar åldersgränsen 16 år. |
 | Steg 3: språkmodell tolkar prompter | `privacy#ai`, `privacy#uppgifter`, `privacy#bitraden`, `privacy#overforing`, `privacy#lagring` | Vilken leverantör, vad som skickas (prompter, filter), om det sparas och hur länge, att träning är avstängd, var leverantören finns. |

@@ -28,7 +28,7 @@ Kontrollerat 28 okt 2026. Varje påstående om personuppgifter i `public/privacy
 |---|---|---|
 | Supabase | Projektet ligger i `eu-west-1` (Irland). | Projekt `eyvmjflmryjdclqzdgzo`, `CLAUDE.md` |
 | Supabase | DPA:n gäller med avtalet; mottagare är Supabase Pte. Ltd (Singapore); överföringar enligt EU:s standardavtalsklausuler (modul 2). | https://supabase.com/legal/dpa |
-| Supabase | Projektet har betalplan (Timo 27 okt, designen för steg 2). **Obekräftat:** att det är Pro och inte Team (Team: säkerhetskopior 14 dagar). Timo kontrollerar (`docs/setup.md`). | — |
+| Supabase | Projektet har **fri plan** (Timo 28 okt, kontrollerat i Billing). Fri plan: loggar 1 dag, och Supabase erbjuder inga säkerhetskopior för fri plan. Pro: loggar och säkerhetskopior 7 dagar. Policyn säger därför "högst 7 dagar", som stämmer på båda. Byts planen till Team (säkerhetskopior 14 dagar) måste policyn ändras. | Timo 28 okt; https://supabase.com/pricing; https://supabase.com/docs/guides/platform/backups |
 | Supabase | Pro: dagliga säkerhetskopior sparas 7 dagar. | https://supabase.com/docs/guides/platform/backups, https://supabase.com/pricing |
 | Supabase | Pro: loggar sparas 7 dagar. | https://supabase.com/pricing ("7-day log retention") |
 | Supabase | Inloggningsloggar innehåller IP-adress. De sparas i Supabases loggverktyg och, om inställningen "Write audit logs to the database" är på, även i tabellen `auth.audit_log_entries`. | https://supabase.com/docs/guides/auth/audit-logs |
