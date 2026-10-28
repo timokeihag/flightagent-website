@@ -74,22 +74,23 @@
       <h3>Om du loggar in med Google</h3>
       <ul>
         <li>Från Google får vi din e-postadress, ditt namn och en länk till din profilbild. Vi ber inte om något mer.</li>
-        <li>Ditt förnamn sparas i din profil, så att agenten vet vad du heter.</li>
+        <li>Ditt förnamn sparas i din profil, så att appen kan hälsa på dig med namn.</li>
         <li>Uppgifterna från Google sparas också med kontot hos vår inloggningstjänst (Supabase), tillsammans med att du loggar in med Google och ett id som Google ger kontot.</li>
       </ul>
       <p>Har du både ett e-postkonto och ett Google-konto med samma bekräftade e-postadress kopplas de ihop till ett konto.</p>
+      <p>E-postadressen behövs för att ha ett konto. Utan den kan vi inte skapa kontot. Förnamnet är frivilligt.</p>
 
       <h3>Teknisk information</h3>
-      <p>När du loggar in, loggar ut eller ändrar kontot loggas händelsen med tid, typ av händelse och IP-adress. Loggarna används för säkerhet och felsökning.</p>
+      <p>När du använder appen loggar Supabase anropen med tid, IP-adress och typ av enhet och webbläsare. Inloggningar, utloggningar och ändringar av kontot loggas på samma sätt. Så länge du är inloggad sparas din inloggning också hos Supabase, med IP-adress och typ av enhet och webbläsare. Uppgifterna används för säkerhet och felsökning.</p>
 
       <h3>På din enhet</h3>
+      <p>Din inloggning sparas i din telefon eller webbläsare, så att du förblir inloggad tills du loggar ut. Den hör ihop med inloggningen hos Supabase som beskrivs ovan.</p>
       <p>Följande sparas bara i din telefon eller webbläsare och skickas inte till oss:</p>
       <ul>
-        <li>Din inloggning, så att du förblir inloggad tills du loggar ut.</li>
         <li>Hemmaflygplatsen du har valt.</li>
         <li>En handling du påbörjade innan du loggade in, till exempel en bevakning du höll på att skapa, så att den kan slutföras efter inloggningen. Den sparas i högst 15 minuter.</li>
       </ul>
-      <p>Vi använder inga kakor för reklam eller statistik.</p>
+      <p>Appen använder inga kakor.</p>
 
       <h3>Om du mejlar oss</h3>
       <p>Det du skriver och din e-postadress, för att kunna svara dig.</p>
@@ -100,7 +101,7 @@
       <h2 id="rattslig-grund">3. Varför vi får spara dem</h2>
       <ul>
         <li><strong>Avtal:</strong> konto, inloggning, förnamn och mejl med kod behövs för att ge dig det konto och den tjänst du har bett om.</li>
-        <li><strong>Berättigat intresse:</strong> loggar behövs för att skydda tjänsten och ditt konto mot missbruk och för att hitta fel. När du mejlar oss behöver vi uppgifterna för att svara.</li>
+        <li><strong>Berättigat intresse:</strong> loggar behövs för att skydda tjänsten och ditt konto mot missbruk och för att hitta fel. Webbhotellet behöver din IP-adress för att kunna visa webbplatsen. När du mejlar oss behöver vi uppgifterna för att svara.</li>
       </ul>
 
       <h2 id="ai">4. Agenten är en AI</h2>
@@ -128,10 +129,12 @@
         <li><strong>Resend:</strong> mejlen skickas från Irland, men uppgifter om utskicken (mottagarens adress, tid och loggar) lagras i USA. Resend är anslutet till EU–US Data Privacy Framework, och överföringen skyddas även av standardavtalsklausuler.</li>
         <li><strong>Microsoft och GoDaddy:</strong> amerikanska bolag. Överföringar skyddas av standardavtalsklausuler eller EU–US Data Privacy Framework.</li>
       </ul>
+      <p>Du kan få en kopia av skyddsåtgärderna genom att mejla <a href="mailto:hello@flightagent.se">hello@flightagent.se</a>.</p>
 
       <h2 id="lagring">8. Hur länge vi sparar uppgifterna</h2>
       <ul>
         <li><strong>Kontot och profilen:</strong> tills du raderar kontot. Då tas de bort direkt.</li>
+        <li><strong>Inloggningen hos Supabase</strong>, med IP-adress och typ av enhet och webbläsare: tills du loggar ut eller raderar kontot.</li>
         <li><strong>Säkerhetskopior:</strong> databasen säkerhetskopieras varje dag, och kopiorna sparas i 7 dagar. Ett raderat konto kan alltså finnas kvar i en säkerhetskopia i högst 7 dagar.</li>
         <li><strong>Loggar hos Supabase:</strong> 7 dagar.</li>
         <li><strong>Uppgifter om utskick hos Resend:</strong> 30 dagar.</li>

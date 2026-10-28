@@ -11,6 +11,10 @@ Kontrollerat 28 okt 2026. Varje påstående om personuppgifter i `public/privacy
 | Supabase Auth sparar e-post, inloggningssätt och de uppgifter Google skickar (namn, profilbildslänk, Googles konto-id) med kontot. | Supabase Auth: `auth.users.raw_user_meta_data`, `auth.identities`; migrationen läser `raw_user_meta_data` |
 | Google-inloggningen begär Supabases standardbehörigheter (e-post och profil). Inga extra behörigheter. | `src/features/auth/authApi.ts`, `signInWithOAuth` utan `scopes` |
 | Inloggningen sparas på enheten (AsyncStorage, webbläsarens lagring på webben). | `src/lib/supabase.ts` (`persistSession: true`) |
+| Varje inloggning är också en session hos Supabase (`auth.sessions`) med `ip` och `user_agent`. Sessionen har ingen maxtid eller inaktivitetsgräns, så den finns kvar tills användaren loggar ut eller raderar kontot. | Supabase Auth, migrationen `20231027141322_add_session_refresh_columns`; `supabase/config.toml` (`timebox` och `inactivity_timeout` bortkommenterade); `CLAUDE.md` "Sessioner" |
+| Supabases API loggar varje anrop med tid, IP-adress och user agent (i loggverktyget, 7 dagar på Pro). | Supabase loggar (API Gateway), https://supabase.com/docs/guides/telemetry/logs |
+| Konton med samma verifierade e-post kopplas ihop automatiskt. | Supabase Auth standard (automatic identity linking); `supabase/config.toml` (`enable_manual_linking = false`); `CLAUDE.md` "Konton och inloggning" |
+| Appen sätter inga kakor (webben använder localStorage). | `src/lib/supabase.ts`, `src/features/search/homeAirport.ts` |
 | Hemmaflygplatsen sparas bara på enheten (localStorage/AsyncStorage). | `src/features/search/homeAirport.ts` |
 | En påbörjad handling (i dag: bevakningsformulärets från, till, typ och målpris) sparas på enheten i högst 15 minuter. | `src/features/auth/pendingAction.ts` (`PENDING_MAX_AGE_MS = 15 * 60 * 1000`) |
 | Engångskoden gäller i 10 minuter. | `supabase/config.toml` (`otp_expiry = 600`) och designen för steg 2 |
@@ -24,6 +28,7 @@ Kontrollerat 28 okt 2026. Varje påstående om personuppgifter i `public/privacy
 |---|---|---|
 | Supabase | Projektet ligger i `eu-west-1` (Irland). | Projekt `eyvmjflmryjdclqzdgzo`, `CLAUDE.md` |
 | Supabase | DPA:n gäller med avtalet; mottagare är Supabase Pte. Ltd (Singapore); överföringar enligt EU:s standardavtalsklausuler (modul 2). | https://supabase.com/legal/dpa |
+| Supabase | Projektet har betalplan (Timo 27 okt, designen för steg 2). **Obekräftat:** att det är Pro och inte Team (Team: säkerhetskopior 14 dagar). Timo kontrollerar (`docs/setup.md`). | — |
 | Supabase | Pro: dagliga säkerhetskopior sparas 7 dagar. | https://supabase.com/docs/guides/platform/backups, https://supabase.com/pricing |
 | Supabase | Pro: loggar sparas 7 dagar. | https://supabase.com/pricing ("7-day log retention") |
 | Supabase | Inloggningsloggar innehåller IP-adress. De sparas i Supabases loggverktyg och, om inställningen "Write audit logs to the database" är på, även i tabellen `auth.audit_log_entries`. | https://supabase.com/docs/guides/auth/audit-logs |

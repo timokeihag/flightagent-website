@@ -13,10 +13,19 @@ const IN_DEVELOPMENT = 'Flightagent är under utveckling. Alla funktioner som be
 
 // Each page and the extra checks it needs on top of the common ones.
 const REQUIRED_PAGES = {
-  'index.html': { mustContain: [IN_DEVELOPMENT], mustLinkTo: ['/privacy', '/terms'] },
+  'index.html': {
+    mustContain: [IN_DEVELOPMENT, 'utkast som ska granskas av en jurist'],
+    mustLinkTo: ['/privacy', '/terms'],
+  },
   '404.html': { mustLinkTo: ['/'] },
   'privacy/index.html': {
-    mustContain: [DRAFT, IN_DEVELOPMENT, 'Senast uppdaterad', 'imy.se', 'Profil'],
+    mustContain: [
+      DRAFT, IN_DEVELOPMENT, 'Senast uppdaterad', 'imy.se', 'Profil',
+      // Final review: sessions keep IP and device type while signed in, and Art. 13 items.
+      'typ av enhet och webbläsare', 'Inloggningen hos Supabase', 'kopia av skyddsåtgärderna',
+      'Förnamnet är frivilligt', 'Appen använder inga kakor.',
+    ],
+    mustNotContain: ['så att agenten vet vad du heter', 'inga kakor för reklam'],
     sections: [
       'ansvarig', 'uppgifter', 'rattslig-grund', 'ai', 'partner', 'bitraden',
       'overforing', 'lagring', 'rattigheter', 'alder', 'google', 'andringar',
@@ -115,6 +124,7 @@ for (const [page, rules] of Object.entries(REQUIRED_PAGES)) {
   }
 
   for (const s of rules.mustContain ?? []) if (!text.includes(s)) fail(page, `saknar texten "${s}"`);
+  for (const s of rules.mustNotContain ?? []) if (text.includes(s)) fail(page, `innehåller texten "${s}"`);
   const links = hrefs(html);
   for (const target of rules.mustLinkTo ?? []) if (!links.includes(target)) fail(page, `länkar inte till ${target}`);
 
