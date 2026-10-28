@@ -18,7 +18,7 @@ const REQUIRED_PAGES = {
     mustLinkTo: ['/privacy', '/terms'],
   },
   '404.html': { mustLinkTo: ['/'] },
-  'privacy/index.html': {
+  'privacy.html': {
     mustContain: [
       DRAFT, IN_DEVELOPMENT, 'Senast uppdaterad', 'imy.se', 'Profil',
       // Final review: sessions keep IP and device type while signed in, and Art. 13 items.
@@ -33,7 +33,7 @@ const REQUIRED_PAGES = {
       'overforing', 'lagring', 'rattigheter', 'alder', 'google', 'andringar',
     ],
   },
-  'terms/index.html': {
+  'terms.html': {
     mustContain: [DRAFT, IN_DEVELOPMENT, 'Senast uppdaterad', 'paketreselagen', 'Allmänna reklamationsnämnden'],
     mustLinkTo: ['/privacy'],
     sections: [
@@ -85,7 +85,8 @@ function internalTargetExists(href) {
   const clean = path.replace(/^\//, '');
   const asFile = join(pub, clean);
   if (existsSync(asFile) && statSync(asFile).isFile()) return true;
-  return existsSync(join(pub, clean, 'index.html'));
+  // /privacy is served from privacy.html by a rewrite in _redirects.
+  return existsSync(join(pub, `${clean}.html`)) || existsSync(join(pub, clean, 'index.html'));
 }
 
 function idsOf(html) {
@@ -125,10 +126,10 @@ for (const [page, rules] of Object.entries(REQUIRED_PAGES)) {
     }
   }
 
-  // statichost answers /privacy with a 308 to /privacy/, so canonical must be the address that answers 200.
+  // Canonical is the address Google has and that answers 200: /privacy (rewritten to privacy.html).
   const canonical = html.match(/<link\b[^>]*rel="canonical"[^>]*href="([^"]*)"/);
   if (canonical) {
-    const expected = 'https://www.flightagent.se/' + page.replace(/index\.html$/, '');
+    const expected = 'https://www.flightagent.se/' + page.replace(/(^|\/)index\.html$/, '$1').replace(/\.html$/, '');
     if (canonical[1] !== expected) fail(page, `canonical är ${canonical[1]}, ska vara ${expected}`);
   }
 
@@ -155,8 +156,17 @@ if (existsSync(cssFile)) {
 }
 
 // Google's brand check opens /privacy and /terms without a slash and may not follow a redirect,
-// so statichost rewrites them to the page (status 200) instead of redirecting to /privacy/.
-const REWRITES = ['/privacy /privacy/index.html 200', '/terms /terms/index.html 200'];
+// so statichost rewrites them to the page (status 200). The pages are files, not folders, because a
+// folder privacy/ makes statichost redirect /privacy to /privacy/ before any rule is read.
+const REWRITES = [
+  '/privacy /privacy.html 200',
+  '/terms /terms.html 200',
+  '/privacy/ /privacy 301',
+  '/terms/ /terms 301',
+];
+for (const dir of ['privacy', 'terms']) {
+  if (existsSync(join(pub, dir))) fail(dir, 'mappen ska inte finnas (statichost skickar då /privacy vidare till /privacy/)');
+}
 const redirectsFile = join(pub, '_redirects');
 const redirects = existsSync(redirectsFile)
   ? readFileSync(redirectsFile, 'utf8').split('\n').map((l) => l.trim().split(/\s+/).join(' '))

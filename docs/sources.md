@@ -1,6 +1,6 @@
 # Källor för integritetspolicyn och villkoren
 
-Kontrollerat 28 okt 2026. Varje påstående om personuppgifter i `public/privacy/index.html` ska gå att spåra hit. "Obekräftat" betyder att texten är försiktigt skriven och att punkten ska kontrolleras före lansering.
+Kontrollerat 28 okt 2026. Varje påstående om personuppgifter i `public/privacy.html` ska gå att spåra hit. "Obekräftat" betyder att texten är försiktigt skriven och att punkten ska kontrolleras före lansering.
 
 ## Appen (repot timokeihag/Flightagent, grenen step-2-login)
 
