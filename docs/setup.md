@@ -49,8 +49,8 @@ Gör det här först när texterna är godkända.
    `2a01:4f9:c01f:8002::`
    Spara.
 9. Klicka pennan på raden med typen **CNAME** och namnet **www**. Ändra värdet från `@` till:
-   `SAJTNAMN.statichost.page`
-   (med ditt sajtnamn). Spara.
+   `flightagent.statichost.page`
+   Spara.
 10. **Rör inga andra rader.** MX, TXT, `_dmarc`, `send`, `resend._domainkey`, `autodiscover`, `email` och de andra ska vara kvar precis som de är. De sköter mejlen.
 11. Skriv till mig att du är klar. Jag kontrollerar att adresserna fungerar och att inget annat har ändrats. Det kan ta från några minuter upp till en timme innan ändringen syns överallt.
 
