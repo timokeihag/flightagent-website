@@ -1,6 +1,6 @@
 # Källor för integritetspolicyn och villkoren
 
-Kontrollerat 28 okt 2026. Varje påstående om personuppgifter i `public/privacy.html` ska gå att spåra hit. "Obekräftat" betyder att texten är försiktigt skriven och att punkten ska kontrolleras före lansering.
+Kontrollerat 28 okt 2026. Agenten och Anthropic kontrollerade 29 okt 2026. Varje påstående om personuppgifter i `public/privacy.html` ska gå att spåra hit. "Obekräftat" betyder att texten är försiktigt skriven och att punkten ska kontrolleras före lansering.
 
 ## Appen (repot timokeihag/Flightagent, grenen step-2-login)
 
@@ -19,7 +19,9 @@ Kontrollerat 28 okt 2026. Varje påstående om personuppgifter i `public/privacy
 | En påbörjad handling (i dag: bevakningsformulärets från, till, typ och målpris) sparas på enheten i högst 15 minuter. | `src/features/auth/pendingAction.ts` (`PENDING_MAX_AGE_MS = 15 * 60 * 1000`) |
 | Engångskoden gäller i 10 minuter. | `supabase/config.toml` (`otp_expiry = 600`) och designen för steg 2 |
 | Kontot raderas i appen (Profil → Radera kontot) efter en ny kod, av Edge Function `delete-account` (`auth.admin.deleteUser`). | `supabase/functions/delete-account/index.ts` |
-| Inga personuppgifter skickas till någon språkmodell i dag. | Ingen språkmodell finns i appen (steg 3 är inte byggt), `CLAUDE.md` "Ordning att bygga" |
+| Agenten (steg 3a) skickar via Edge Function `agent` det användaren skriver i sökningen och samtalet, filterobjektet, dagens datum, hemmaflygplatsen och agentens minne om tips till Anthropic. Ingen inloggning krävs. | Designen för steg 3a (repot, grenen step-3a-agent-search), `docs/superpowers/specs/2026-10-29-step-3a-agent-search-design.md`, "Hur det byggs" |
+| Inget av samtalet sparas hos Flightagent: funktionen loggar inte prompter eller svar, ingen tabell lagrar dem, och samtalet finns bara i appens minne. | samma design, "Hur det byggs" ("Inget sparas om samtalet"); globala krav i planen för steg 3a |
+| Agentens minne om tips (räkning per sorts tips) sparas bara på enheten (localStorage/AsyncStorage), syns i Profil under "Det agenten vet om dig" och kan tas bort där. | samma design, "Agenten anpassar sig" |
 | Bevakningar, sparade sökningar och resor sparas inte på servern i dag. | Designen för steg 2, "Inte med" |
 
 ## Leverantörer
@@ -42,3 +44,12 @@ Kontrollerat 28 okt 2026. Varje påstående om personuppgifter i `public/privacy
 | Google | Google är självständigt personuppgiftsansvarigt för inloggningen hos Google. Appen får e-post, namn och profilbild. | Googles OAuth och Supabase Google-inloggning |
 | Google | Policyn ska beskriva hur appen kommer åt, använder, lagrar och delar Google-data. | https://developers.google.com/terms/api-services-user-data-policy |
 | IMY | Tillsynsmyndighet i Sverige. | https://www.imy.se |
+| Anthropic | Kunder i EES har avtal med Anthropic Ireland, Limited (övriga med Anthropic, PBC). Gäller från första godkännandet eller användningen. Kontrollerat 29 okt. | https://www.anthropic.com/legal/commercial-terms (inledningen; version från 17 jun 2025) |
+| Anthropic | Anthropic får inte träna modeller på kundens innehåll (Customer Content, alltså in- och utdata) från tjänsterna. Kontrollerat 29 okt. | https://www.anthropic.com/legal/commercial-terms (avsnitt B) |
+| Anthropic | Indata och utdata från API:t och andra kommersiella produkter används inte för träning, utom om kunden själv ger feedback eller väljer att dela data. Kontrollerat 29 okt. | https://privacy.claude.com/en/articles/7996868-is-my-data-used-for-model-training (uppdaterad 18 aug 2026); https://platform.claude.com/docs/en/manage-claude/api-and-data-retention ("never used for model training without your express permission") |
+| Anthropic | Personuppgiftsbiträdesavtalet (DPA) ingår i de kommersiella villkoren genom hänvisning. Ingen separat signering. Kontrollerat 29 okt. | https://www.anthropic.com/legal/commercial-terms (avsnitt C); https://www.anthropic.com/legal/data-processing-addendum (inledningen; version från 24 feb 2025) |
+| Anthropic | Överföringar ut ur EES skyddas av EU:s standardavtalsklausuler, modul 2 och/eller modul 3. DPA:n nämner inte EU–US Data Privacy Framework, och vi hittade inget om att Anthropic är certifierat. Policyn nämner därför bara standardavtalsklausulerna. Kontrollerat 29 okt. | https://www.anthropic.com/legal/data-processing-addendum (avsnitt I.1) |
+| Anthropic | API:t lagrar data i USA ("us" är enda möjliga workspace geo). Själva körningen av modellen sker som standard var som helst (`inference_geo: "global"`), eller bara i USA om `inference_geo: "us"` sätts (1,1 gånger priset). Policyn säger därför "lagras i USA" och att tolkningen "kan ske i USA eller i andra länder utanför EU". Kontrollerat 29 okt. | https://platform.claude.com/docs/en/manage-claude/data-residency |
+| Anthropic | API:ts in- och utdata raderas automatiskt inom 30 dagar. Undantag: längre lagring som kunden själv styr (till exempel Files API, används inte), annat avtal, när det behövs för att upprätthålla användarpolicyn, och när lagen kräver det. Flaggas något av Anthropics automatiska kontroller sparas in- och utdata i upp till 2 år (klassificeringen i upp till 7 år). Kontrollerat 29 okt. | https://privacy.claude.com/en/articles/7996866-how-long-do-you-store-my-organization-s-data (uppdaterad 1 jul 2026) |
+| Anthropic | Claude Opus 5.5 är inte en "Covered Model" med särskilda krav på lagring (det gäller Fable och Mythos). Kontrollerat 29 okt. | https://platform.claude.com/docs/en/manage-claude/api-and-data-retention ("Model-specific data retention requirements") |
+| Anthropic | **Obekräftat:** listan över Anthropics underbiträden (https://trust.anthropic.com/subprocessors) gick inte att läsa utan webbläsare. Policyn nämner inga underbiträden till Anthropic. | — |

@@ -23,7 +23,7 @@
     <div class="wrap">
       <p class="eyebrow">Flightagent</p>
       <h1>Integritetspolicy</h1>
-      <p class="updated">Senast uppdaterad 28 oktober 2026</p>
+      <p class="updated">Senast uppdaterad 29 oktober 2026</p>
 
       <div class="notice">
         <p><strong>Utkast. Texten ska granskas av en jurist innan Flightagent lanseras.</strong></p>
@@ -80,16 +80,28 @@
       <p>Har du både ett e-postkonto och ett Google-konto med samma bekräftade e-postadress kopplas de ihop till ett konto.</p>
       <p>E-postadressen behövs för att ha ett konto. Utan den kan vi inte skapa kontot. Förnamnet är frivilligt.</p>
 
+      <h3>När du söker med agenten</h3>
+      <p>Du behöver inget konto för att söka. När agenten tolkar din sökning skickas följande via vår server till Anthropic, som driver språkmodellen (avsnitt 4):</p>
+      <ul>
+        <li>Det du skriver i sökningen och i samtalet med agenten.</li>
+        <li>Sökningen som agenten har tolkat fram, till exempel resmål, datum, antal resenärer, barnens åldrar, budget och önskemål om boendet.</li>
+        <li>Dagens datum och din hemmaflygplats.</li>
+        <li>Vilka sorters tips du brukar tacka nej till, till exempel att du sällan vill byta flygplats.</li>
+      </ul>
+      <p>Vi sparar inget av det. Varken det du skriver, sökningen eller agentens svar sparas hos Flightagent, och samtalet finns bara i appen medan du använder den. Skriv inte känsliga uppgifter, som uppgifter om hälsa, i sökningen om det inte behövs.</p>
+
       <h3>Teknisk information</h3>
       <p>När du använder appen loggar Supabase anropen med tid, IP-adress och typ av enhet och webbläsare. Inloggningar, utloggningar och ändringar av kontot loggas på samma sätt. Så länge du är inloggad sparas din inloggning också hos Supabase, med IP-adress och typ av enhet och webbläsare. Uppgifterna används för säkerhet och felsökning.</p>
 
       <h3>På din enhet</h3>
       <p>Din inloggning sparas i din telefon eller webbläsare, så att du förblir inloggad tills du loggar ut. Den hör ihop med inloggningen hos Supabase som beskrivs ovan.</p>
-      <p>Följande sparas bara i din telefon eller webbläsare och skickas inte till oss:</p>
+      <p>Följande sparas bara i din telefon eller webbläsare och sparas inte hos oss:</p>
       <ul>
         <li>Hemmaflygplatsen du har valt.</li>
+        <li>Det agenten vet om dig: vilka sorters tips du brukar tacka nej till. Du ser det och kan ta bort det i Profil under ”Det agenten vet om dig”.</li>
         <li>En handling du påbörjade innan du loggade in, till exempel en bevakning du höll på att skapa, så att den kan slutföras efter inloggningen. Den sparas i högst 15 minuter.</li>
       </ul>
+      <p>Hemmaflygplatsen och det agenten vet om dig följer bara med när du söker med agenten, som det står ovan.</p>
       <p>Appen använder inga kakor.</p>
 
       <h3>Om du mejlar oss</h3>
@@ -100,12 +112,14 @@
 
       <h2 id="rattslig-grund">3. Varför vi får spara dem</h2>
       <ul>
-        <li><strong>Avtal:</strong> konto, inloggning, förnamn och mejl med kod behövs för att ge dig det konto och den tjänst du har bett om.</li>
+        <li><strong>Avtal:</strong> konto, inloggning, förnamn och mejl med kod behövs för att ge dig det konto och den tjänst du har bett om. Det du skriver till agenten behövs för att söka fram de resor du ber om.</li>
         <li><strong>Berättigat intresse:</strong> loggar behövs för att skydda tjänsten och ditt konto mot missbruk och för att hitta fel. Webbhotellet behöver din IP-adress för att kunna visa webbplatsen. När du mejlar oss behöver vi uppgifterna för att svara.</li>
       </ul>
 
       <h2 id="ai">4. Agenten är en AI</h2>
-      <p>Agenten i Flightagent är en AI som söker, jämför och rekommenderar resor. I dag skickas inga personuppgifter till någon språkmodell. Innan det sker uppdaterar vi den här policyn och berättar vilken leverantör vi använder. Där leverantören erbjuder det väljer vi att det du skriver inte används för att träna språkmodeller.</p>
+      <p>Agenten i Flightagent är en AI som söker, jämför och rekommenderar resor. Den använder språkmodellen Claude från Anthropic, ett amerikanskt bolag, för att tolka det du skriver och skriva sina svar. Vad som skickas står i avsnitt 2.</p>
+      <p>Anthropic använder inte det du skriver för att träna sina språkmodeller. Hur länge Anthropic sparar det står i avsnitt 8.</p>
+      <p>Agenten anpassar vilka tips den visar efter vilka sorters tips du brukar tacka nej till. Det påverkar bara vilka tips du ser, och det sparas bara på din enhet.</p>
 
       <h2 id="partner">5. Partner och provision</h2>
       <p>Du bokar och betalar alltid direkt hos partnern, till exempel ett flygbolag, ett resebolag eller en researrangör. När du går vidare till en partner gäller partnerns villkor och integritetspolicy för det du gör där.</p>
@@ -118,6 +132,7 @@
         <li><strong>Resend</strong> – skickar mejlen med kod. Mejlen skickas från Irland.</li>
         <li><strong>statichost.eu</strong> – webbhotell för flightagent.se, i Sverige och EU.</li>
         <li><strong>Microsoft 365, via GoDaddy</strong> – e-post när du mejlar hello@flightagent.se.</li>
+        <li><strong>Anthropic</strong> – språkmodellen som tolkar det du skriver till agenten. Avtalet är med Anthropic Ireland, Limited, och uppgifterna lagras i USA.</li>
       </ul>
       <p>När du väljer att logga in med Google är Google själv ansvarigt för det som händer hos Google. Läs mer i <a href="https://policies.google.com/privacy">Googles integritetspolicy</a>.</p>
       <p>Vi säljer aldrig personuppgifter och använder dem inte för reklam.</p>
@@ -128,6 +143,7 @@
         <li><strong>Supabase:</strong> uppgifterna lagras i Irland, men bolaget och en del av dess underleverantörer finns utanför EU. Överföringar skyddas av EU-kommissionens standardavtalsklausuler.</li>
         <li><strong>Resend:</strong> mejlen skickas från Irland, men uppgifter om utskicken (mottagarens adress, tid och loggar) lagras i USA. Resend är anslutet till EU–US Data Privacy Framework, och överföringen skyddas även av standardavtalsklausuler.</li>
         <li><strong>Microsoft och GoDaddy:</strong> amerikanska bolag. Överföringar skyddas av standardavtalsklausuler eller EU–US Data Privacy Framework.</li>
+        <li><strong>Anthropic:</strong> det du skriver till agenten lagras i USA, och själva tolkningen kan ske i USA eller i andra länder utanför EU. Överföringen skyddas av EU-kommissionens standardavtalsklausuler, som ingår i vårt avtal med Anthropic.</li>
       </ul>
       <p>Du kan få en kopia av skyddsåtgärderna genom att mejla <a href="mailto:hello@flightagent.se">hello@flightagent.se</a>.</p>
 
@@ -138,7 +154,8 @@
         <li><strong>Säkerhetskopior:</strong> säkerhetskopior av databasen sparas i högst 7 dagar. Ett raderat konto kan alltså finnas kvar i en säkerhetskopia i högst 7 dagar.</li>
         <li><strong>Loggar hos Supabase:</strong> högst 7 dagar.</li>
         <li><strong>Uppgifter om utskick hos Resend:</strong> 30 dagar.</li>
-        <li><strong>På din enhet:</strong> tills du loggar ut, byter hemmaflygplats eller tömmer appens eller webbläsarens data. En påbörjad handling i högst 15 minuter.</li>
+        <li><strong>Det du skriver till agenten:</strong> sparas inte hos oss. Anthropic raderar det automatiskt inom 30 dagar. Om Anthropics automatiska kontroller bedömer att något bryter mot Anthropics regler för användning kan det sparas i upp till 2 år, och längre om lagen kräver det.</li>
+        <li><strong>På din enhet:</strong> tills du loggar ut, byter hemmaflygplats eller tömmer appens eller webbläsarens data. Det agenten vet om dig tills du tar bort det i Profil eller tömmer appens eller webbläsarens data. En påbörjad handling i högst 15 minuter.</li>
         <li><strong>Mejl till oss:</strong> så länge ärendet kräver det.</li>
       </ul>
 
@@ -148,10 +165,11 @@
         <li>få veta vilka uppgifter vi har om dig och få en kopia,</li>
         <li>rätta uppgifter som är fel – förnamn och e-post ändrar du själv under Profil,</li>
         <li>få dina uppgifter raderade – du raderar kontot själv under Profil → Radera kontot,</li>
+        <li>se och ta bort det agenten vet om dig – det gör du själv i Profil under ”Det agenten vet om dig”,</li>
         <li>begränsa eller invända mot hur vi använder uppgifterna,</li>
         <li>få ut uppgifter du har gett oss i ett format som går att flytta (dataportabilitet).</li>
       </ul>
-      <p>Mejla <a href="mailto:hello@flightagent.se">hello@flightagent.se</a> om du vill använda dina rättigheter. Vi svarar inom en månad.</p>
+      <p>Mejla <a href="mailto:hello@flightagent.se">hello@flightagent.se</a> om du vill använda dina rättigheter. Vi svarar inom en månad. Det du skriver till agenten sparar vi inte, så det kan vi inte lämna ut i efterhand.</p>
       <p>Tycker du att vi hanterar dina uppgifter fel kan du klaga hos Integritetsskyddsmyndigheten, <a href="https://www.imy.se">imy.se</a>.</p>
 
       <h2 id="alder">10. Ålder</h2>

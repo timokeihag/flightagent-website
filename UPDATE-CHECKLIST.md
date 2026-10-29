@@ -13,6 +13,8 @@ Avsnitten anges med id, till exempel `privacy#lagring` för avsnittet `id="lagri
 | **Före lansering** | `privacy#alder`, `terms#konto` | Juristen bekräftar åldersgränsen 16 år. |
 | Steg 3: språkmodell tolkar prompter | `privacy#ai`, `privacy#uppgifter`, `privacy#bitraden`, `privacy#overforing`, `privacy#lagring` | Vilken leverantör, vad som skickas (prompter, filter), om det sparas och hur länge, att träning är avstängd, var leverantören finns. |
 | Steg 3: sökhistorik eller preferenser sparas | `privacy#uppgifter`, `privacy#lagring`, `privacy#rattigheter` | Vad agenten vet om användaren och att det kan rättas och tas bort. |
+| Agentens minne sparas på kontot (efter lansering) | `privacy#uppgifter`, `privacy#lagring`, `privacy#rattigheter` | I dag sparas minnet bara på enheten. På kontot: att det sparas på servern, hur länge, och att det raderas med kontot. |
+| Annan språkmodell, eller prompterna ska stanna i ett visst land | `privacy#ai`, `privacy#bitraden`, `privacy#overforing`, `privacy#lagring` | Leverantör, var den lagrar och kör (för Anthropic: `inference_geo`), hur länge den sparar, träning. Källor i `docs/sources.md`. |
 | Steg 4: flygsökning och partnerlänkar (Travelpayouts, KAYAK) | `privacy#partner`, `privacy#bitraden`, `terms#bokning`, `terms#provision` | Vad som skickas till partnern när man klickar vidare (till exempel spårnings-id i länken), vilka partner. |
 | Steg 4: Brave Search eller andra källor | `privacy#bitraden` | Om något som användaren skrivit skickas vidare. |
 | Steg 5: hotell via Expedia, flyg + hotell | `privacy#partner`, `terms#bokning` | Paketreselagen och sammanlänkade researrangemang (juristen, se `CLAUDE.md` öppna frågor). |
