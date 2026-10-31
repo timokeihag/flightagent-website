@@ -23,7 +23,7 @@
     <div class="wrap">
       <p class="eyebrow">Flightagent</p>
       <h1>Integritetspolicy</h1>
-      <p class="updated">Senast uppdaterad 29 oktober 2026</p>
+      <p class="updated">Senast uppdaterad 31 oktober 2026</p>
 
       <div class="notice">
         <p><strong>Utkast. Texten ska granskas av en jurist innan Flightagent lanseras.</strong></p>
@@ -61,7 +61,7 @@
       <p>Flightagent är en reseagent, en AI, som hjälper dig att hitta resor och rekommenderar resor från partner som betalar provision. Vi säljer inga resor och tar inte emot några betalningar.</p>
 
       <h2 id="uppgifter">2. Vilka uppgifter vi sparar</h2>
-      <p>Du kan använda Flightagent utan konto. Ett konto behövs först när du vill göra något som ska sparas, till exempel en bevakning.</p>
+      <p>Du kan använda Flightagent utan konto. Ett konto behövs först när du vill göra något som ska sparas, till exempel spara en resa eller skapa en bevakning.</p>
 
       <h3>Om du skapar konto med e-post</h3>
       <ul>
@@ -90,6 +90,15 @@
       </ul>
       <p>Vi sparar inget av det. Varken det du skriver, sökningen eller agentens svar sparas hos Flightagent, och samtalet finns bara i appen medan du använder den. Skriv inte känsliga uppgifter, som uppgifter om hälsa, i sökningen om det inte behövs.</p>
 
+      <h3>Om du sparar eller delar resor</h3>
+      <p>Det här sparas med ditt konto hos Supabase:</p>
+      <ul>
+        <li>Resor du sparar: resans uppgifter och sökningen resan kom från, till exempel datum, antal resenärer, barnens åldrar och budget.</li>
+        <li>Sökningar du sparar, med samma slags uppgifter.</li>
+        <li>Hur många kontroller av exakt pris du har använt den här månaden.</li>
+      </ul>
+      <p>När du delar en resa sparar vi en kopia av resan och skapar en länk. Den som har länken kan se resan utan konto. Sidan visar inte vem som delade den, men kopian hör ihop med ditt konto hos oss. Barnens åldrar och din sökning ingår inte i kopian.</p>
+
       <h3>Teknisk information</h3>
       <p>När du använder appen loggar Supabase anropen med tid, IP-adress och typ av enhet och webbläsare. Inloggningar, utloggningar och ändringar av kontot loggas på samma sätt. Så länge du är inloggad sparas din inloggning också hos Supabase, med IP-adress och typ av enhet och webbläsare. Uppgifterna används för säkerhet och felsökning.</p>
 
@@ -99,7 +108,7 @@
       <ul>
         <li>Hemmaflygplatsen du har valt.</li>
         <li>Det agenten vet om dig: vilka sorters tips du brukar tacka nej till. Du ser det och kan ta bort det i Profil under ”Det agenten vet om dig”.</li>
-        <li>En handling du påbörjade innan du loggade in, till exempel en bevakning du höll på att skapa, så att den kan slutföras efter inloggningen. Den sparas i högst 15 minuter.</li>
+        <li>En handling du påbörjade innan du loggade in, till exempel en bevakning du höll på att skapa eller en resa du ville spara, så att den kan slutföras efter inloggningen. Den sparas i högst 15 minuter.</li>
       </ul>
       <p>Hemmaflygplatsen och det agenten vet om dig följer bara med när du söker med agenten, som det står ovan.</p>
       <p>Appen använder inga kakor.</p>
@@ -112,7 +121,7 @@
 
       <h2 id="rattslig-grund">3. Varför vi får spara dem</h2>
       <ul>
-        <li><strong>Avtal:</strong> konto, inloggning, förnamn och mejl med kod behövs för att ge dig det konto och den tjänst du har bett om. Det du skriver till agenten behövs för att söka fram de resor du ber om.</li>
+        <li><strong>Avtal:</strong> konto, inloggning, förnamn, mejl med kod, sparade och delade resor och räknaren för exakt pris behövs för att ge dig det konto och den tjänst du har bett om. Det du skriver till agenten behövs för att söka fram de resor du ber om.</li>
         <li><strong>Berättigat intresse:</strong> loggar behövs för att skydda tjänsten och ditt konto mot missbruk och för att hitta fel. Webbhotellet behöver din IP-adress för att kunna visa webbplatsen. När du mejlar oss behöver vi uppgifterna för att svara.</li>
       </ul>
 
@@ -150,6 +159,9 @@
       <h2 id="lagring">8. Hur länge vi sparar uppgifterna</h2>
       <ul>
         <li><strong>Kontot och profilen:</strong> tills du raderar kontot. Då tas de bort direkt.</li>
+        <li><strong>Sparade resor och sökningar:</strong> tills du tar bort dem eller raderar kontot.</li>
+        <li><strong>Delade resor:</strong> länken slutar gälla efter 90 dagar. Kopian tas bort nästa gång du delar en resa, eller när du raderar kontot. Vill du ta bort en länk tidigare kan du mejla oss.</li>
+        <li><strong>Räknaren för exakt pris:</strong> tills du raderar kontot.</li>
         <li><strong>Inloggningen hos Supabase</strong>, med IP-adress och typ av enhet och webbläsare: tills du loggar ut eller raderar kontot.</li>
         <li><strong>Säkerhetskopior:</strong> säkerhetskopior av databasen sparas i högst 7 dagar. Ett raderat konto kan alltså finnas kvar i en säkerhetskopia i högst 7 dagar.</li>
         <li><strong>Loggar hos Supabase:</strong> högst 7 dagar.</li>
@@ -166,6 +178,7 @@
         <li>rätta uppgifter som är fel – förnamn och e-post ändrar du själv under Profil,</li>
         <li>få dina uppgifter raderade – du raderar kontot själv under Profil → Radera kontot,</li>
         <li>se och ta bort det agenten vet om dig – det gör du själv i Profil under ”Det agenten vet om dig”,</li>
+        <li>ta bort sparade resor och sökningar – det gör du själv under Mina resor och sökningar,</li>
         <li>begränsa eller invända mot hur vi använder uppgifterna,</li>
         <li>få ut uppgifter du har gett oss i ett format som går att flytta (dataportabilitet).</li>
       </ul>
